@@ -87,7 +87,7 @@ def create_app(config: Config | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         mongo = AsyncIOMotorClient(config.mongo_uri)
-        db = mongo[config.mongo_database]
+        db = mongo["wai"]
         await db.command("ping")
         http_client = httpx.AsyncClient(timeout=None)
         amqp = await aio_pika.connect_robust(config.amqp_uri)

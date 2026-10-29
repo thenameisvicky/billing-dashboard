@@ -31,10 +31,10 @@ AMQP_URI=amqp://guest:guest@localhost:5672/
 MONGO_URI=mongodb://localhost:27017
 MONGO_DATABASE=wai
 OLLAMA_URL=http://localhost:11434
-JWT_SECRET=change-me
-PUBIC_TOKEN_SECRET=change-me
+JWT_SECRET=change
+PUBIC_TOKEN_SECRET=change
 APP_BASE_URL=http://localhost:8082
-RAZORPAY_WEBHOOK_SECRET=change-me
+RAZORPAY_WEBHOOK_SECRET=change
 
 # Optional
 RAZORPAY_KEY_ID=
@@ -74,7 +74,7 @@ npm install
 npm run dev
 ```
 
-UI runs at **http://localhost:3009**. Dev server proxies `/api` → `http://localhost:8082`.
+UI runs at **<http://localhost:3009>**. Dev server proxies `/api` → `http://localhost:8082`.
 
 ## Quick start (both)
 
@@ -86,7 +86,7 @@ cd wAI-server-new && uv sync && uv run wai-server-new
 cd wAI-client && npm install && npm run dev
 ```
 
-Open http://localhost:3009
+Open <http://localhost:3009>
 
 ## Production build (client)
 
