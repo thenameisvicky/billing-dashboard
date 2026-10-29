@@ -1,0 +1,25 @@
+# OS / IDE
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log*
+
+# Client
+wAI-client/node_modules/
+wAI-client/dist/
+wAI-client/.rspack-profile-*/
+
+# Server
+wAI-server-new/.venv/
+wAI-server-new/**/__pycache__/
+wAI-server-new/**/*.py[cod]
+wAI-server-new/.ruff_cache/
+wAI-server-new/.pytest_cache/

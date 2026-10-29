@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: #16a34a;
+        --color-primary-dark: #15803d;
+        --color-secondary: #000000;
+        --color-bg: #ffffff;
+        --color-text-primary: #111827;
+        --color-text-secondary: #6b7280;
+        --font-primary: Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+        --font-secondary: "Segoe UI", Arial, "Noto Sans", sans-serif;
+        /* --erp-ui-scale: 1; */
+    }
+
+    html,
+    body {
+        font-family: var(--font-primary);
+        font-size: 15px;
+        line-height: 1.35;
+        text-rendering: geometricPrecision;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    th,
+    label,
+    button {
+        font-family: var(--font-secondary);
+    }
+
+    [class*="tracking-"] {
+        letter-spacing: 0 !important;
+    }
+
+    /* [data-font-scale="comfortable"] {
+        --erp-ui-scale: 1;
+    }
+
+    [data-font-scale="large"] {
+        --erp-ui-scale: 1.06;
+    }
+
+    [data-font-scale="comfortable"],
+    [data-font-scale="large"] {
+        zoom: var(--erp-ui-scale);
+    } */
+}
+
+@layer components {
+
+    .container-page {
+        @apply mx-auto max-w-none px-3;
+    }
+
+    .section {
+        @apply py-3;
+    }
+
+    .heading-xl {
+        @apply text-2xl font-bold text-slate-900;
+    }
+
+    .heading-lg {
+        @apply text-xl font-bold text-slate-900;
+    }
+
+    .heading-md {
+        @apply text-lg font-bold text-slate-800;
+    }
+
+    .text-primary {
+        @apply text-gray-900;
+    }
+
+    .text-secondary {
+        @apply text-gray-500;
+    }
+
+    .text-muted {
+        @apply text-gray-400;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center rounded border px-3 py-2 text-[16px] font-bold;
+    }
+
+    .btn-primary {
+        @apply btn bg-green-600 text-white;
+    }
+
+    .btn-primary:hover {
+        @apply bg-green-700;
+    }
+
+    .btn-secondary {
+        @apply btn bg-black text-white;
+    }
+
+    .btn-secondary:hover {
+        @apply bg-gray-800;
+    }
+
+    .btn-outline {
+        @apply btn border border-gray-300 text-gray-800;
+    }
+
+    .btn-outline:hover {
+        @apply bg-gray-100;
+    }
+
+    .card {
+        @apply bg-white border border-slate-300 p-3;
+    }
+
+    .card:hover {
+        @apply border-slate-400;
+    }
+
+    .card-hover:hover {
+        @apply border-slate-400;
+    }
+
+    .input {
+        @apply w-full rounded border border-slate-300 px-3 py-2 text-[16px] font-semibold;
+    }
+
+    .input:focus {
+        @apply outline-none ring-2 ring-green-500 border-green-500;
+    }
+
+    .input-label {
+        @apply block text-base font-medium text-gray-700 mb-1;
+    }
+
+    .nav {
+        @apply flex items-center justify-between py-4;
+    }
+
+    .nav-link {
+        @apply text-base font-medium text-gray-700;
+    }
+
+    .nav-link:hover {
+        @apply text-green-600;
+    }
+
+    .badge {
+        @apply inline-flex items-center rounded border px-2 py-0.5 text-[16px] font-bold;
+    }
+
+    .badge-success {
+        @apply badge bg-green-100 text-green-700;
+    }
+
+    .badge-dark {
+        @apply badge bg-black text-white;
+    }
+
+    .shadow-soft {
+        @apply shadow-none;
+    }
+
+    .shadow-premium {
+        @apply shadow-none;
+    }
+
+
+    .logo-text {
+        @apply text-green-600 font-bold tracking-tight;
+    }
+
+    .logo-glow {
+        text-shadow: none;
+    }
+
+    .logo-text-gradient {
+        @apply text-emerald-700 font-bold;
+    }
+
+    .ai {
+        @apply text-green-600;
+    }
+
+    .ai-bg {
+        @apply bg-green-50 border border-green-100;
+    }
+
+    .ai-border {
+        @apply border-green-500;
+    }
+
+    .ai-glow {
+        @apply shadow-none;
+    }
+
+    .ai-card {
+        @apply card ai-bg shadow-soft;
+    }
+
+    .ai-button {
+        @apply btn bg-green-600 text-white;
+    }
+
+    .ai-button:hover {
+        @apply bg-green-700;
+    }
+
+    .ai-tag {
+        @apply inline-flex items-center rounded border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[16px] font-bold text-emerald-700;
+    }
+}
