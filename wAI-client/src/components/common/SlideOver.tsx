@@ -1,9 +1,10 @@
 import { createPortal } from "react-dom";
+import type { ReactNode } from "react";
 
 interface Props {
     isOpen: boolean;
     onClose: () => void;
-    title: string;
+    title: ReactNode;
     subtitle?: string;
     widthClassName?: string;
     children: React.ReactNode;

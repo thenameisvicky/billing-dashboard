@@ -44,6 +44,7 @@ class InvoiceSource(str, Enum):
     manual = "MANUAL"
     csv_import = "CSV_IMPORT"
     pos_import = "POS_IMPORT"
+    ai = "AI"
 
 
 class InventoryEffect(str, Enum):
@@ -97,6 +98,7 @@ class Invoicedetails(BaseModel):
     lifecycle_status: LifecycleStatus | None = None
     delivery_status: DeliveryStatus | None = None
     source: InvoiceSource | None = None
+    created_by_ai: bool = False
     inventory_effect: InventoryEffect | None = None
     inventory_applied: bool = False
     issued_at: datetime | None = None

@@ -318,7 +318,14 @@ export default function InvoicesPage() {
           onClick={(event) => event.stopPropagation()}
           onChange={(event) => setSelectedIds((current) => event.target.checked ? [...current, invoiceId] : current.filter((id) => id !== invoiceId))}
         />,
-        inv.invoice_number || `INV-${inv.invoice_tnx_id.substring(0, 8)}`,
+        <span className="inline-flex items-center gap-2">
+          <span>{inv.invoice_number || `INV-${inv.invoice_tnx_id.substring(0, 8)}`}</span>
+          {(inv.created_by_ai || inv.source === "AI") ? (
+            <span className="inline-flex rounded border border-blue-200 bg-blue-50 px-1.5 py-0.5 text-[12px] font-bold leading-none text-blue-600">
+              AI
+            </span>
+          ) : null}
+        </span>,
         customer ? customer.name : inv.customer_id ?? "Unknown",
         createdAt ? (
           <Tooltip 
@@ -386,7 +393,16 @@ export default function InvoicesPage() {
           <SlideOver
               isOpen={!!viewItem}
               onClose={() => setViewItem(null)}
-              title={`Invoice ${viewItem.invoice_number || viewItem.invoice_tnx_id.substring(0,8)}`}
+              title={
+                <span className="inline-flex items-center gap-2">
+                  <span>{`Invoice ${viewItem.invoice_number || viewItem.invoice_tnx_id.substring(0,8)}`}</span>
+                  {(viewItem.created_by_ai || viewItem.source === "AI") ? (
+                    <span className="inline-flex rounded border border-blue-200 bg-blue-50 px-1.5 py-0.5 text-[12px] font-bold leading-none text-blue-600">
+                      AI
+                    </span>
+                  ) : null}
+                </span>
+              }
               subtitle={viewItem.status}
           >
               <div className="space-y-3">

@@ -152,6 +152,10 @@ async def create_invoice_document(
     now = now_utc()
     invoice_tnx_id = str(uuid.uuid4())
     invoice_number = str(payload.get("invoice_number") or f"INV-{invoice_tnx_id[:8].upper()}")
+    resolved_source = str(payload.get("source") or source or "MANUAL").upper()
+    created_by_ai = bool(payload.get("created_by_ai")) or resolved_source == "AI"
+    if created_by_ai:
+        resolved_source = "AI"
     seller_snapshot, buyer_snapshot, item_snapshot, supplier_gst = await build_snapshots(state, user["company_id"], customer_id, processed_items)
     invoice = {
         "_id": ObjectId(),
@@ -176,7 +180,8 @@ async def create_invoice_document(
         "lifecycle_status": lifecycle_status,
         "delivery_status": "NOT_SENT",
         "payment_status": "UnPaid",
-        "source": source,
+        "source": resolved_source,
+        "created_by_ai": created_by_ai,
         "inventory_effect": inventory_effect,
         "inventory_applied": False,
         "issued_at": now if lifecycle_status == "ISSUED" else None,
@@ -211,8 +216,19 @@ async def create_invoice_document(
             "_id": ObjectId(),
             "entity_id": invoice_tnx_id,
             "entity_type": "Invoice",
-            "event_type": "InvoiceCreated" if source == "MANUAL" else "InvoiceImported",
-            "metadata": {"source": source, "invoice_number": invoice_number, "grand_total": calculated_grand},
+            "event_type": (
+                "InvoiceCreated"
+                if resolved_source == "MANUAL"
+                else "InvoiceCreatedByAI"
+                if resolved_source == "AI"
+                else "InvoiceImported"
+            ),
+            "metadata": {
+                "source": resolved_source,
+                "created_by_ai": created_by_ai,
+                "invoice_number": invoice_number,
+                "grand_total": calculated_grand,
+            },
             "created_at": now,
             "company_id": user["company_id"],
         }
